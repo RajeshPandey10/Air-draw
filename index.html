@@ -1,0 +1,91 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AirDraw — Professional Drawing Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>🖐️ AirDraw —Drawing Tool</h1>
+    <div class="status" id="status">Initializing...</div>
+  </header>
+
+  <div class="wrap">
+    <div class="stage" id="stage">
+      <video id="video" playsinline muted></video>
+      <canvas id="draw"></canvas>
+      <canvas id="textLayer"></canvas>
+      <canvas id="overlay"></canvas>
+
+      <div class="hud">
+        <label>
+          <span class="loading-spinner" id="brushSpinner"></span>
+          Brush <input type="range" id="size" min="1" max="60" value="6" />
+        </label>
+        <label>Color <input type="color" id="color" value="#5eead4" /></label>
+        <button id="undo" title="Undo last stroke">Undo</button>
+        <button id="clear" title="Clear drawing">Clear</button>
+        <label class="pill"><input type="checkbox" id="mouseDraw"> Mouse draw</label>
+        <label class="pill"><input type="checkbox" id="mirror" checked> Mirror</label>
+      </div>
+
+      <div class="legend">Pinch <b>thumb + index</b> to draw • Use mouse draw if camera is blocked</div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="panel">
+        <h3>Camera / Input</h3>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button id="retryCam" class="primary">Retry Camera</button>
+          <label class="ghost" style="padding:6px 8px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;">
+            Upload <input id="uploadFile" type="file" accept="image/*,video/*" style="display:none" />
+          </label>
+          <button id="useBoard">Use drawing board</button>
+        </div>
+        <div class="fallback small" id="fallbackMsg" style="display:none;margin-top:8px"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Text & Notes</h3>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
+          <input id="textInput" placeholder="Type text or note..." style="flex:1" />
+          <input type="color" id="textColor" value="#ffffff" />
+        </div>
+        <div style="display:flex;gap:6px;margin-bottom:8px;">
+          <select id="fontSize"><option>20</option><option selected>36</option><option>48</option><option>64</option></select>
+          <button id="addText">Add Text</button>
+          <button id="addNote">Add Note</button>
+        </div>
+        <div class="note-list" id="notesList"></div>
+        <div class="small">Tip: drag text/notes on canvas to reposition. Double-click text to edit.</div>
+      </div>
+
+      <div class="panel">
+        <h3>Export & Preview</h3>
+        <div class="preview" id="previewBox"> <span class="small" id="previewLabel">No preview yet</span> </div>
+        <div style="display:flex;gap:8px;margin-top:8px;">
+          <button id="exportPNG" class="primary">Export PNG</button>
+          <button id="copyClipboard">Copy</button>
+        </div>
+        <div class="small" style="margin-top:8px;color:var(--muted)">Export contains camera frame (or uploaded background) + your strokes + notes/text.</div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    Works in-browser. <strong>If you get a permission error</strong> (NotAllowedError) — run from a secure origin (https or localhost), or use the Upload / Use drawing board options above.
+  </footer>
+
+  <!-- Notification container -->
+  <div id="notification" class="notification"></div>
+
+  <!-- MediaPipe libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+  <script src="/script.js"></script>
+</body>
+</html>
