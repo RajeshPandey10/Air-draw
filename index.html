@@ -1,91 +1,311 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AirDraw — Professional Drawing Tool</title>
+
+  <title>AirDraw — Gesture Drawing & Virtual Whiteboard | Free Online Hand‑Tracking Sketch App</title>
+
+  <meta name="description" content="AirDraw is a free online gesture drawing and virtual whiteboard. Draw with hand‑tracking or mouse, add notes, annotate images, and export PNG — no downloads." />
+  <meta name="keywords" content="online drawing tool, gesture drawing, hand tracking, virtual whiteboard, free drawing app, AI drawing, browser sketch app, webcam drawing, annotate images, PNG export, mediapipe hands, digital whiteboard, note taking" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://YOUR_CANONICAL_URL" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="AirDraw" />
+  <meta property="og:title" content="AirDraw — Gesture Drawing & Virtual Whiteboard | Free Online Hand‑Tracking Sketch App" />
+  <meta property="og:description" content="Draw in your browser using hand‑tracking or mouse. Add text, notes, and export PNG. Works on desktop and mobile." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOUR_CANONICAL_URL" />
+  <meta property="og:image" content="https://YOUR_OG_IMAGE_URL" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AirDraw — Online gesture drawing and virtual whiteboard in action" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@yourTwitterHandle" />
+  <meta name="twitter:creator" content="@yourTwitterHandle" />
+  <meta name="twitter:title" content="AirDraw — Free Online Gesture Drawing & Virtual Whiteboard" />
+  <meta name="twitter:description" content="Draw with hand‑tracking or mouse, annotate images, add notes, and export PNG — right in your browser." />
+  <meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL" />
+  <meta name="twitter:image:alt" content="AirDraw — browser-based hand‑tracking drawing demo" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- Performance: preconnect to CDNs -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- Font Awesome + styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AirDraw — Gesture Drawing & Virtual Whiteboard",
+    "alternateName": "AirDraw",
+    "url": "https://YOUR_CANONICAL_URL",
+    "image": "https://YOUR_OG_IMAGE_URL",
+    "description": "Free browser-based drawing tool with hand-tracking and mouse input. Sketch, annotate, add notes, and export PNG — no downloads.",
+    "applicationCategory": "GraphicsApplication",
+    "applicationSubCategory": "DrawingApplication",
+    "operatingSystem": "Web",
+    "isAccessibleForFree": true,
+    "browserRequirements": "Works in modern browsers. Camera permission enables hand tracking. Supports mouse-only mode.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Hand-tracking drawing",
+      "Mouse drawing",
+      "Mirror mode",
+      "Undo / Clear",
+      "Add Text & Notes",
+      "PNG export & Copy to clipboard",
+      "Upload image/video as background",
+      "In-browser — no install"
+    ],
+    "creator": {
+      "@type": "Organization",
+      "name": "Your Brand",
+      "url": "https://YOUR_CANONICAL_URL"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need to install anything to use AirDraw?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. AirDraw works entirely in your browser. For hand tracking, allow camera permission. You can also draw with the mouse if your camera is blocked."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does AirDraw work on mobile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, it works on modern mobile browsers. For best results, use a stable phone mount or switch to mouse draw mode."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is AirDraw free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, AirDraw is free to use and runs locally in your browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I export my drawings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Use Export PNG or Copy to clipboard. The export includes your camera/uploaded background, strokes, and any text/notes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my camera feed stored or uploaded?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Processing happens in your browser. Camera frames are not uploaded to a server."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Optional: Sitemap hint -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 </head>
 <body>
-  <header>
-    <h1>🖐️ AirDraw —Drawing Tool</h1>
-    <div class="status" id="status">Initializing...</div>
+  <a href="#stage" class="skip-link" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to drawing</a>
+
+  <header role="banner">
+    <h1>🖐️ AirDraw — Gesture Drawing Tool & Virtual Whiteboard</h1>
+    <p class="subhead" style="margin-top:4px;color:var(--muted);">
+      Free online hand‑tracking drawing app. Sketch, annotate, and export — right in your browser.
+    </p>
+    <div class="status" id="status" aria-live="polite">Initializing...</div>
   </header>
 
-  <div class="wrap">
-    <div class="stage" id="stage">
-      <video id="video" playsinline muted></video>
-      <canvas id="draw"></canvas>
-      <canvas id="textLayer"></canvas>
-      <canvas id="overlay"></canvas>
+  <main>
+    <div class="wrap">
+      <div class="stage" id="stage" role="region" aria-label="Drawing stage">
+        <video id="video" playsinline muted aria-label="Camera feed used for hand tracking"></video>
 
-      <div class="hud">
-        <label>
-          <span class="loading-spinner" id="brushSpinner"></span>
-          Brush <input type="range" id="size" min="1" max="60" value="6" />
-        </label>
-        <label>Color <input type="color" id="color" value="#5eead4" /></label>
-        <button id="undo" title="Undo last stroke">Undo</button>
-        <button id="clear" title="Clear drawing">Clear</button>
-        <label class="pill"><input type="checkbox" id="mouseDraw"> Mouse draw</label>
-        <label class="pill"><input type="checkbox" id="mirror" checked> Mirror</label>
+        <canvas id="draw" role="img" aria-label="Drawing canvas">Your browser does not support canvas.</canvas>
+        <canvas id="textLayer" role="img" aria-label="Text and notes layer">Your browser does not support canvas.</canvas>
+        <canvas id="overlay" aria-hidden="true">Your browser does not support canvas.</canvas>
+
+        <div class="hud" role="toolbar" aria-label="Drawing controls">
+          <label>
+            <span class="loading-spinner" id="brushSpinner" aria-hidden="true"></span>
+            Brush <input type="range" id="size" min="1" max="60" value="6" aria-label="Brush size" />
+          </label>
+          <label>Color <input type="color" id="color" value="#5eead4" aria-label="Brush color" /></label>
+          <button id="undo" title="Undo last stroke" aria-label="Undo last stroke">Undo</button>
+          <button id="clear" title="Clear drawing" aria-label="Clear drawing">Clear</button>
+          <label class="pill"><input type="checkbox" id="mouseDraw" aria-label="Enable mouse draw"> Mouse draw</label>
+          <label class="pill"><input type="checkbox" id="mirror" checked aria-label="Mirror mode"> Mirror</label>
+        </div>
+
+        <div class="legend">Pinch <b>thumb + index</b> to draw • Use mouse draw if camera is blocked</div>
       </div>
 
-      <div class="legend">Pinch <b>thumb + index</b> to draw • Use mouse draw if camera is blocked</div>
+      <aside class="sidebar" aria-label="Options and export">
+        <div class="panel">
+          <h3>Camera / Input</h3>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button id="retryCam" class="primary">Retry Camera</button>
+            <label class="ghost" style="padding:6px 8px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;">
+              Upload <input id="uploadFile" type="file" accept="image/*,video/*" style="display:none" />
+            </label>
+            <button id="useBoard">Use drawing board</button>
+          </div>
+          <div class="fallback small" id="fallbackMsg" style="display:none;margin-top:8px"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Text & Notes</h3>
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
+            <input id="textInput" placeholder="Type text or note..." style="flex:1" />
+            <input type="color" id="textColor" value="#ffffff" aria-label="Text color" />
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:8px;">
+            <select id="fontSize" aria-label="Font size">
+              <option>20</option><option selected>36</option><option>48</option><option>64</option>
+            </select>
+            <button id="addText">Add Text</button>
+            <button id="addNote">Add Note</button>
+          </div>
+          <div class="note-list" id="notesList" aria-live="polite"></div>
+          <div class="small">Tip: drag text/notes on canvas to reposition. Double-click text to edit.</div>
+        </div>
+
+        <div class="panel">
+          <h3>Export & Preview</h3>
+          <div class="preview" id="previewBox">
+            <span class="small" id="previewLabel">No preview yet</span>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <button id="exportPNG" class="primary">Export PNG</button>
+            <button id="copyClipboard">Copy</button>
+          </div>
+          <div class="small" style="margin-top:8px;color:var(--muted)">
+            Export contains camera frame (or uploaded background) + your strokes + notes/text.
+          </div>
+        </div>
+      </aside>
     </div>
 
-    <aside class="sidebar">
-      <div class="panel">
-        <h3>Camera / Input</h3>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button id="retryCam" class="primary">Retry Camera</button>
-          <label class="ghost" style="padding:6px 8px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;">
-            Upload <input id="uploadFile" type="file" accept="image/*,video/*" style="display:none" />
-          </label>
-          <button id="useBoard">Use drawing board</button>
-        </div>
-        <div class="fallback small" id="fallbackMsg" style="display:none;margin-top:8px"></div>
-      </div>
+    <!-- SEO content sections -->
+    <section id="features" class="panel" style="margin-top:24px;">
+      <h2>Free Online Gesture Drawing & Virtual Whiteboard</h2>
+      <p>AirDraw lets you sketch and annotate using hand‑tracking powered by computer vision or simple mouse input. Ideal for quick diagrams, digital whiteboarding, note‑taking, and creative sketching — no installs, no sign‑up.</p>
+      <ul style="columns:2;gap:24px;list-style:disc;padding-left:20px;">
+        <li>Hand‑tracking drawing (thumb + index pinch)</li>
+        <li>Mouse draw mode for camera‑less setups</li>
+        <li>Mirror mode for natural webcam flow</li>
+        <li>Undo / Clear anytime</li>
+        <li>Add Text & Notes (drag to reposition)</li>
+        <li>Upload image/video as background</li>
+        <li>Export PNG or copy to clipboard</li>
+        <li>Works in browser on desktop and mobile</li>
+      </ul>
+    </section>
 
-      <div class="panel">
-        <h3>Text & Notes</h3>
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
-          <input id="textInput" placeholder="Type text or note..." style="flex:1" />
-          <input type="color" id="textColor" value="#ffffff" />
-        </div>
-        <div style="display:flex;gap:6px;margin-bottom:8px;">
-          <select id="fontSize"><option>20</option><option selected>36</option><option>48</option><option>64</option></select>
-          <button id="addText">Add Text</button>
-          <button id="addNote">Add Note</button>
-        </div>
-        <div class="note-list" id="notesList"></div>
-        <div class="small">Tip: drag text/notes on canvas to reposition. Double-click text to edit.</div>
-      </div>
+    <section id="how-it-works" class="panel">
+      <h2>How it works</h2>
+      <ol>
+        <li>Allow camera access for hand‑tracking (or enable Mouse draw).</li>
+        <li>Pinch thumb + index to draw; release to pause.</li>
+        <li>Adjust brush size and color from the toolbar.</li>
+        <li>Add text or notes, then drag to position.</li>
+        <li>Export as PNG or Copy when you’re done.</li>
+      </ol>
+    </section>
 
-      <div class="panel">
-        <h3>Export & Preview</h3>
-        <div class="preview" id="previewBox"> <span class="small" id="previewLabel">No preview yet</span> </div>
-        <div style="display:flex;gap:8px;margin-top:8px;">
-          <button id="exportPNG" class="primary">Export PNG</button>
-          <button id="copyClipboard">Copy</button>
-        </div>
-        <div class="small" style="margin-top:8px;color:var(--muted)">Export contains camera frame (or uploaded background) + your strokes + notes/text.</div>
-      </div>
-    </aside>
-  </div>
+    <section id="use-cases" class="panel">
+      <h2>Popular use cases</h2>
+      <ul>
+        <li>Virtual whiteboard for live demos and teaching</li>
+        <li>Quick sketching and UI ideation</li>
+        <li>Annotate screenshots or video frames</li>
+        <li>Lecture notes and lightweight visual explanations</li>
+      </ul>
+    </section>
+
+    <section id="faq" class="panel">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Can I use AirDraw without a camera?</summary>
+        <p>Yes. Enable Mouse draw in the toolbar to sketch without a camera.</p>
+      </details>
+      <details>
+        <summary>Does AirDraw store my camera video?</summary>
+        <p>No. Processing is done locally in your browser; frames are not uploaded.</p>
+      </details>
+      <details>
+        <summary>Is AirDraw free?</summary>
+        <p>Yes, it’s free to use.</p>
+      </details>
+      <details>
+        <summary>What browsers are supported?</summary>
+        <p>Modern Chromium, Firefox, and Safari. For best results, use HTTPS or localhost to grant camera permissions.</p>
+      </details>
+    </section>
+  </main>
 
   <footer>
     Works in-browser. <strong>If you get a permission error</strong> (NotAllowedError) — run from a secure origin (https or localhost), or use the Upload / Use drawing board options above.
+    <nav class="small" style="margin-top:8px;">
+      <a href="#features">Features</a> •
+      <a href="#how-it-works">How it works</a> •
+      <a href="#use-cases">Use cases</a> •
+      <a href="#faq">FAQ</a> •
+      <a href="/privacy">Privacy</a> •
+      <a href="/terms">Terms</a>
+    </nav>
   </footer>
 
   <!-- Notification container -->
-  <div id="notification" class="notification"></div>
+  <div id="notification" class="notification" role="status" aria-live="polite"></div>
+
+  <!-- Noscript fallback for SEO and accessibility -->
+  <noscript>
+    <div class="panel" style="margin-top:16px;">
+      <h2>AirDraw requires JavaScript</h2>
+      <p>Please enable JavaScript to use hand‑tracking and drawing features. You can still download the app’s source or read the FAQ above.</p>
+    </div>
+  </noscript>
 
   <!-- MediaPipe libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
 
-  <script src="/script.js"></script>
+  <!-- Your app script -->
+  <script src="/script.js" defer></script>
 </body>
 </html>
